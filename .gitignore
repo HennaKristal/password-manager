@@ -1,6 +1,16 @@
-SourceCode/bin
-SourceCode/obj
-SourceCode/.vs
-SourceCode/.vscode
-.vs
-.vscode
+# Build output
+bin/
+obj/
+*.pfx
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# VS Code
+.vscode/
+
+# Logs and caches
+*.log
+*.cache
