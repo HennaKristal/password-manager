@@ -108,23 +108,26 @@ namespace PasswordManager
             {
                 var url = Encrypter.Decrypt(accountData[index].Value[0], encryptionKey);
 
-                if (!string.IsNullOrEmpty(url))
+                if (string.IsNullOrWhiteSpace(url))
                 {
-                    if (url.StartsWith("https://", StringComparison.OrdinalIgnoreCase) ||
-                        url.StartsWith("http://", StringComparison.OrdinalIgnoreCase) ||
-                        url.EndsWith(".fi", StringComparison.OrdinalIgnoreCase) ||
-                        url.EndsWith(".com", StringComparison.OrdinalIgnoreCase) ||
-                        url.EndsWith(".org", StringComparison.OrdinalIgnoreCase) ||
-                        url.EndsWith(".gov", StringComparison.OrdinalIgnoreCase) ||
-                        url.EndsWith(".net", StringComparison.OrdinalIgnoreCase))
+                    return;
+                }
+
+                bool isWebUrl = url.StartsWith("https://", StringComparison.OrdinalIgnoreCase) || url.StartsWith("http://", StringComparison.OrdinalIgnoreCase);
+
+                if (isWebUrl)
+                {
+                    ProcessStartInfo processInfo = new ProcessStartInfo
                     {
-                        ProcessStartInfo processInfo = new ProcessStartInfo(url);
-                        Process.Start(processInfo);
-                    }
-                    else
-                    {
-                        Clipboard.SetText(url);
-                    }
+                        FileName = url,
+                        UseShellExecute = true
+                    };
+
+                    Process.Start(processInfo);
+                }
+                else
+                {
+                    Clipboard.SetText(url);
                 }
             }
             else if (button.Text == "Account")
