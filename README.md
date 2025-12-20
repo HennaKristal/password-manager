@@ -2,7 +2,4 @@
 
 Password manager is an application which helps you save your passwords locally to your computer using encryption.
 
-
-## How to Use
-
-To open the application run the executable (PasswordManager.exe). You may delete all other files, they are not required to run the executable.
+![password-manager-preview](https://github.com/user-attachments/assets/0d7b1db1-41de-4bef-a92d-4deab7cfad77)
